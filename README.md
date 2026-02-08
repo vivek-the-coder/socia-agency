@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 SOCIA — Creative Marketing Intelligence
 
-## Getting Started
+SOCIA is a premium agency management platform built for modern creative and performance marketing teams.
+It unifies campaigns, leads, reporting, and client operations into one powerful, beautifully designed workspace.
 
-First, run the development server:
+Where creativity meets measurable growth.
 
-```bash
+✨ What SOCIA Enables
+
+SOCIA helps digital marketing agencies:
+
+📊 Track campaign performance across platforms
+
+💼 Manage multiple client accounts from one dashboard
+
+🎯 Monitor leads, pipeline value, and conversions
+
+📈 Visualize performance with real-time insights
+
+📑 Export professional, client-ready reports
+
+⚡ Operate faster with a clean SaaS-style interface
+
+🧩 Core Modules
+Module	Description
+Dashboard	Performance overview, KPIs, and trend analytics
+Client Accounts	Client health monitoring and performance tracking
+Ads Manager	Campaign pacing and channel insights
+Leads Inbox	Lead pipeline, deal stages, and conversion tracking
+Reports	Client-ready performance intelligence exports
+🎨 Design Philosophy
+
+SOCIA is crafted with a modern SaaS aesthetic:
+
+Dark premium gradients
+
+Glassmorphism dashboard surfaces
+
+Signature orange performance highlights
+
+Clean typography & spacious layouts
+
+Smooth transitions and micro-interactions
+
+Built to feel like a high-end marketing command center, not just another admin panel.
+
+🛠 Tech Stack
+Layer	Technology
+Framework	Next.js (App Router)
+Language	TypeScript
+UI	Tailwind CSS + Custom Components
+Charts	Recharts
+Authentication	NextAuth
+Database ORM	Prisma
+Hosting	Vercel
+🔐 Authentication
+
+SOCIA uses NextAuth for secure authentication.
+
+Demo Access (if enabled):
+
+Email: admin@agency.com
+Password: admin123
+
+⚙️ Local Development
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/socia-agency.git
+
+# 2. Enter the project
+cd socia-agency
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+App runs at: http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌍 Deployment
 
-## Learn More
+SOCIA is optimized for Vercel.
 
-To learn more about Next.js, take a look at the following resources:
+Push project to GitHub
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Import project into Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Add environment variables
 
-## Deploy on Vercel
+Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🔑 Required Environment Variables
+NEXTAUTH_SECRET=your-secret-key
+DATABASE_URL=your-database-url
+NEXTAUTH_URL=https://your-domain.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📸 Social Preview
+
+SOCIA includes a custom Open Graph cover for social sharing:
+
+/public/og-cover.jpg
+
+🤝 Built For
+
+Creative agencies
+
+Performance marketing teams
+
+Growth consultancies
+
+Client-facing marketing professionals
+
+📄 License
+
+Private project — SOCIA Creative Agency ©
