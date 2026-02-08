@@ -2,8 +2,10 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "@/lib/prisma"
+import { authConfig } from "./auth.config"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+    ...authConfig,
     // adapter: PrismaAdapter(prisma), // Temporarily disabled for Mock Login debugging
     providers: [
         Credentials({
@@ -44,15 +46,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
         }),
     ],
-    callbacks: {
-        async session({ session, user, token }) {
-            if (session.user) {
-                // Add role to session
-                // session.user.role = user.role; // user is undefined in jwt strategy?
-                // need to fetch user from db or use token
-            }
-            return session;
-        }
-    },
-    session: { strategy: "jwt" }, // Use JWT for credentials provider compatibility
 })
