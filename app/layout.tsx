@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "SOCIA",
     images: [
       {
-        url: "/og-cover.jpg",
+        url: "/og-cover.png",
         width: 1200,
         height: 630,
         alt: "SOCIA Creative Marketing Platform",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "SOCIA — Creative Marketing Intelligence",
     description:
       "A powerful creative marketing command center to manage campaigns, leads, and growth performance in one unified workspace.",
-    images: ["/og-cover.jpg"],
+    images: ["/og-cover.png"],
   },
 
   icons: {
