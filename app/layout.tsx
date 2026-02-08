@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-domain.vercel.app"), // 🔁 Replace after deploy
+  metadataBase: new URL("https://socia-agency.vercel.app/"), // 🔁 Replace after deploy
 
   title: "SOCIA — Creative Marketing Intelligence",
   description:
