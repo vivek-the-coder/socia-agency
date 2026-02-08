@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  role          String    @default("AGENCY_ADMIN") // AGENCY_ADMIN, CLIENT_USER
+  accounts      Account[]
+  sessions      Session[]
+  
+  // Relations
+  clientAccess  ClientAccount[] // Which clients this user can access
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ClientAccount {
+  id          String   @id @default(cuid())
+  name        String
+  logoUrl     String?
+  industry    String?
+  status      String   @default("ACTIVE") // ACTIVE, CHURNED
+  
+  users       User[]
+  leads       Lead[]
+  adAccounts  AdAccount[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AdAccount {
+  id              String   @id @default(cuid())
+  clientAccountId String
+  platform        String   // GOOGLE, META, LINKEDIN
+  externalId      String
+  name            String
+  status          String   @default("ACTIVE")
+  
+  clientAccount   ClientAccount @relation(fields: [clientAccountId], references: [id])
+  campaigns       AdCampaign[]
+  metrics         AdMetric[]
+}
+
+model AdCampaign {
+  id          String   @id @default(cuid())
+  adAccountId String
+  name        String
+  status      String
+  budget      Float
+  
+  adAccount   AdAccount @relation(fields: [adAccountId], references: [id])
+  metrics     AdMetric[]
+}
+
+model AdMetric {
+  id             String   @id @default(cuid())
+  adAccountId    String
+  adCampaignId   String?
+  date           DateTime
+  spend          Float
+  impressions    Int
+  clicks         Int
+  conversions    Int
+  revenue        Float?
+  
+  adAccount      AdAccount @relation(fields: [adAccountId], references: [id])
+  adCampaign     AdCampaign? @relation(fields: [adCampaignId], references: [id])
+  
+  @@unique([adAccountId, date, adCampaignId])
+}
+
+model Lead {
+  id              String   @id @default(cuid())
+  clientAccountId String
+  name            String
+  email           String?
+  phone           String?
+  source          String   // Google Ads, Meta, Organic
+  formName        String?
+  status          String   @default("NEW") // NEW, CONTACTED, QUALIFIED, CLOSED_WON, CLOSED_LOST
+  value           Float?
+  notes           String?
+  
+  clientAccount   ClientAccount @relation(fields: [clientAccountId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

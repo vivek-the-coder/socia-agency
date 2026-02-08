@@ -1,0 +1,343 @@
+@import "tailwindcss";
+
+
+
+@custom-variant dark (&:is(.dark *));
+
+
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+   * SOCIA ENTERPRISE DESIGN SYSTEM
+   * Direction: Confident, Minimal, Sharp, Data-First
+   * Foundation: Slate (Neutral) + Indigo (Primary)
+   * ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* ─── Background & Foreground (High Contrast) ─── */
+  --background: #F8FAFC;
+  /* Slate-50: Clean, professional background */
+  --foreground: #0F172A;
+  /* Slate-900: Sharp, legible text */
+
+  /* ─── Surface Layer (Cards) ─── */
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+
+  /* ─── Primary Brand (Deep Indigo) ─── */
+  --primary: #4F46E5;
+  /* Actionable, confident */
+  --primary-foreground: #FFFFFF;
+
+  /* ─── Secondary (Subtle) ─── */
+  --secondary: #F1F5F9;
+  /* Slate-100 */
+  --secondary-foreground: #334155;
+  /* Slate-700 */
+
+  /* ─── Muted (De-emphasized) ─── */
+  --muted: #F8FAFC;
+  /* Slate-50 */
+  --muted-foreground: #64748B;
+  /* Slate-500 */
+
+  /* ─── Accent (Hover/Select) ─── */
+  --accent: #F1F5F9;
+  /* Slate-100 */
+  --accent-foreground: #0F172A;
+
+  /* ─── Feedback States (Muted, Professional) ─── */
+  --destructive: #EF4444;
+  /* Red-500 */
+  --destructive-foreground: #FFFFFF;
+
+  /* ─── Structure (Borders & Inputs) ─── */
+  --border: #E2E8F0;
+  /* Slate-200: Subtle distinction */
+  --input: #E2E8F0;
+  --ring: #4F46E5;
+  /* Focus state */
+
+  /* ─── Data Visualization Variables ─── */
+  --chart-1: #4F46E5;
+  /* Indigo (Primary) */
+  --chart-2: #10B981;
+  /* Emerald (Success/Growth) */
+  --chart-3: #F59E0B;
+  /* Amber (Warning/Caution) */
+  --chart-4: #EF4444;
+  /* Red (Negative/Alert) */
+  --chart-5: #8B5CF6;
+  /* Violet (Secondary) */
+
+  /* ─── Modern Radius (8px = Professional) ─── */
+  --radius: 0.5rem;
+
+  /* ─── Font Stack ─── */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* ─── Sidebar Variables ─── */
+  --sidebar-background: #0F172A;
+  /* Slate-900: Enterprise Dark Sidebar */
+  --sidebar-foreground: #F8FAFC;
+  /* Slate-50 */
+  --sidebar-primary: #4F46E5;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E293B;
+  /* Slate-800 */
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #1E293B;
+  /* Slate-800 */
+  --sidebar-ring: #4F46E5;
+}
+
+/* ─── Dark Mode Support (Future Proofing) ─── */
+.dark {
+  --background: #020617;
+  /* Slate-950 */
+  --foreground: #F8FAFC;
+  /* Slate-50 */
+  --card: #0F172A;
+  /* Slate-900 */
+  --card-foreground: #F8FAFC;
+  --popover: #0F172A;
+  --popover-foreground: #F8FAFC;
+  --primary: #6366F1;
+  /* Indigo-500 */
+  --primary-foreground: #FFFFFF;
+  --secondary: #1E293B;
+  /* Slate-800 */
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  /* Slate-400 */
+  --accent: #1E293B;
+  --accent-foreground: #F8FAFC;
+  --destructive: #7F1D1D;
+  /* Red-900 */
+  --destructive-foreground: #F8FAFC;
+  --border: #1E293B;
+  --input: #1E293B;
+  --ring: #6366F1;
+  --chart-1: #6366F1;
+  --chart-2: #34D399;
+  --chart-3: #FBBF24;
+  --chart-4: #F87171;
+  --chart-5: #A78BFA;
+  --sidebar-background: #020617;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #6366F1;
+}
+
+/* ─── Theme Configuration ─── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* ─── Base Reset ─── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* Prevent media from causing overflow */
+  img,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+  }
+
+
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ─── Enterprise Utilities ─── */
+
+/* Financial Numerals */
+.font-mono {
+  font-family: var(--font-mono) !important;
+  font-feature-settings: "tnum" on, "lnum" on, "zero" on;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Professional Shadows (Subtle, Lifted) */
+.shadow-pro {
+  box-shadow:
+    0 1px 2px 0 rgba(15, 23, 42, 0.04),
+    0 4px 6px -1px rgba(15, 23, 42, 0.02);
+}
+
+.shadow-pro-hover {
+  box-shadow:
+    0 4px 6px -1px rgba(15, 23, 42, 0.04),
+    0 10px 15px -3px rgba(15, 23, 42, 0.04);
+}
+
+/* Dividers */
+.divide-pro>*+* {
+  border-top: 1px solid var(--border);
+}
+
+/* Glassmorphism (Subtle) */
+.glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Sidebar Active Indicator */
+.sidebar-active {
+  @apply bg-sidebar-accent text-sidebar-accent-foreground;
+  position: relative;
+}
+
+.sidebar-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--sidebar-primary);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* ===== MOBILE ROOT FIX ===== */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body>* {
+    max-width: 100% !important;
+  }
+
+  /* Kill any fixed desktop container */
+  div,
+  section,
+  main,
+  header,
+  footer {
+    max-width: 100% !important;
+  }
+
+  /* Prevent flex children from overflowing */
+  * {
+    min-width: 0 !important;
+  }
+}
+
+/* Mobile filter row fix */
+@media (max-width: 768px) {
+  .filters-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filters-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+/*  Chart Specific Stabilization  */
+.chart-card {
+  width: 100%;
+  min-height: 260px;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.chart-card svg,
+.chart-card canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+svg {
+  overflow: visible !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
