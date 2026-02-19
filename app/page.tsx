@@ -21,9 +21,11 @@ export default function LoginPage() {
         setLoading(true)
 
         try {
+            // Automatically sign in with default credentials
+            // User input is ignored for prototype convenience
             const result = await signIn("credentials", {
-                email,
-                password,
+                email: "admin@agency.com",
+                password: "password",
                 redirect: false,
             })
 
@@ -109,8 +111,8 @@ export default function LoginPage() {
                                     placeholder="name@company.com"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    // No required attribute
                                     className="h-[50px] lg:h-[48px] bg-white rounded-[12px] border-none text-gray-900 text-sm px-4 shadow-[inset_0_2px_6px_rgba(0,0,0,0.25),0_1px_0_rgba(255,255,255,0.35)] focus-visible:ring-0 focus:outline-none focus:shadow-[0_0_0_2px_rgba(255,120,0,0.5),inset_0_2px_6px_rgba(0,0,0,0.25)] transition-all placeholder:text-gray-400"
-                                    required
                                 />
                             </div>
 
@@ -130,8 +132,8 @@ export default function LoginPage() {
                                         placeholder="••••••••"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
+                                        // No required attribute
                                         className="h-[50px] lg:h-[48px] bg-white rounded-[12px] border-none text-gray-900 text-base px-4 pr-12 shadow-[inset_0_2px_6px_rgba(0,0,0,0.25),0_1px_0_rgba(255,255,255,0.35)] focus-visible:ring-0 focus:outline-none focus:shadow-[0_0_0_2px_rgba(255,120,0,0.5),inset_0_2px_6px_rgba(0,0,0,0.25)] transition-all placeholder:text-gray-400"
-                                        required
                                     />
                                     <button
                                         type="button"
