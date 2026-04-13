@@ -1,116 +1,185 @@
-🚀 SOCIA — Creative Marketing Intelligence
+# Agency MCM Portal
 
-SOCIA is a premium agency management platform built for modern creative and performance marketing teams.
-It unifies campaigns, leads, reporting, and client operations into one powerful, beautifully designed workspace.
+A modern agency operations dashboard built with Next.js, React, Tailwind CSS, NextAuth, and Prisma.
 
-Where creativity meets measurable growth.
+This project is designed for marketing and client-management workflows, with dedicated areas for campaign oversight, client accounts, leads, and reporting. The current codebase is positioned as a front-end product prototype with authentication scaffolding and Prisma models in place for future backend expansion.
 
-✨ What SOCIA Enables
+## Overview
 
-SOCIA helps digital marketing agencies:
+Agency MCM Portal provides a premium dashboard experience for agencies that need a single workspace to monitor:
 
-📊 Track campaign performance across platforms
+- Portfolio-level performance
+- Client account health
+- Advertising campaigns across channels
+- Lead pipeline activity
+- Reporting and exported insights
 
-💼 Manage multiple client accounts from one dashboard
+The UI is built around a polished SaaS-style layout with responsive dashboard views and interactive charts.
 
-🎯 Monitor leads, pipeline value, and conversions
+## Current Feature Scope
 
-📈 Visualize performance with real-time insights
+The application currently includes:
 
-📑 Export professional, client-ready reports
+- Landing and login experience
+- Protected dashboard routes via middleware
+- Dashboard summary view with performance visuals
+- Client accounts module
+- Ads manager module
+- Leads inbox module
+- Reports and insights module
+- Prisma schema for users, client accounts, leads, ad accounts, campaigns, and metrics
 
-⚡ Operate faster with a clean SaaS-style interface
+## Current Implementation Notes
 
-🧩 Core Modules
-Module	Description
-Dashboard	Performance overview, KPIs, and trend analytics
-Client Accounts	Client health monitoring and performance tracking
-Ads Manager	Campaign pacing and channel insights
-Leads Inbox	Lead pipeline, deal stages, and conversion tracking
-Reports	Client-ready performance intelligence exports
-🎨 Design Philosophy
+This repository is not yet a fully wired production system. A few important details:
 
-SOCIA is crafted with a modern SaaS aesthetic:
+- Most dashboard screens currently render mock data for UI and product prototyping.
+- Authentication is configured with NextAuth credentials and includes a mock login path for local testing.
+- Prisma is set up and partially referenced, but the Prisma adapter is currently commented out in [`auth.ts`](C:/Users/HP/Documents/Agency-MCM-Portal/agency-mcm-portal/auth.ts).
+- The login page currently signs in with hardcoded demo credentials for prototype convenience.
 
-Dark premium gradients
+Demo sign-in used by the current implementation:
 
-Glassmorphism dashboard surfaces
+- Email: `admin@agency.com`
+- Password: `password`
 
-Signature orange performance highlights
+## Tech Stack
 
-Clean typography & spacious layouts
+- Framework: Next.js 16 (App Router)
+- Language: TypeScript
+- UI: React 19, Tailwind CSS 4, shadcn-style components
+- Authentication: NextAuth v5 beta
+- ORM: Prisma
+- Database: PostgreSQL
+- Charts: ApexCharts, Recharts
+- Icons and Motion: Lucide React, Framer Motion
 
-Smooth transitions and micro-interactions
+## Project Structure
 
-Built to feel like a high-end marketing command center, not just another admin panel.
+```text
+app/
+  api/auth/[...nextauth]/   NextAuth route handler
+  dashboard/                Protected application routes
+  login/                    Login page
+components/                 Shared UI and app components
+context/                    React context providers
+hooks/                      Custom hooks
+lib/                        Shared utilities and Prisma client
+prisma/                     Prisma schema
+public/                     Static assets
+auth.ts                     Main NextAuth setup
+auth.config.ts              Shared auth configuration
+middleware.ts               Route protection
+```
 
-🛠 Tech Stack
-Layer	Technology
-Framework	Next.js (App Router)
-Language	TypeScript
-UI	Tailwind CSS + Custom Components
-Charts	Recharts
-Authentication	NextAuth
-Database ORM	Prisma
-Hosting	Vercel
-🔐 Authentication
+## Getting Started
 
-SOCIA uses NextAuth for secure authentication.
+### Prerequisites
 
-Demo Access (if enabled):
+- Node.js 20+
+- npm
+- PostgreSQL
 
-Email: admin@agency.com
-Password: admin123
+### Installation
 
-⚙️ Local Development
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/socia-agency.git
-
-# 2. Enter the project
-cd socia-agency
-
-# 3. Install dependencies
+```bash
+git clone https://github.com/<your-username>/agency-mcm-portal.git
+cd agency-mcm-portal
 npm install
+```
 
-# 4. Start the dev server
+### Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+DATABASE_URL="postgresql://postgres:password@localhost:5432/agency_portal"
+NEXTAUTH_SECRET="replace-with-a-secure-random-string"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+### Database Setup
+
+Generate the Prisma client:
+
+```bash
+npx prisma generate
+```
+
+Push the schema to your local database:
+
+```bash
+npx prisma db push
+```
+
+Optional: inspect the database with Prisma Studio:
+
+```bash
+npx prisma studio
+```
+
+### Run the App
+
+Start the development server:
+
+```bash
 npm run dev
+```
 
+Open [http://localhost:3000](http://localhost:3000).
 
-App runs at: http://localhost:3000
+## Available Scripts
 
-🌍 Deployment
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
-SOCIA is optimized for Vercel.
+## Authentication and Access Control
 
-Push project to GitHub
+- `/dashboard` routes are protected by [`middleware.ts`](C:/Users/HP/Documents/Agency-MCM-Portal/agency-mcm-portal/middleware.ts)
+- Unauthenticated users are redirected away from protected routes
+- Login currently uses a credentials provider and prototype-friendly mock access
+- The codebase is structured to support deeper Prisma-backed auth flows later
 
-Import project into Vercel
+## Prisma Data Model
 
-Add environment variables
+The Prisma schema currently models:
 
-Deploy
+- `User`
+- `Account`
+- `Session`
+- `VerificationToken`
+- `ClientAccount`
+- `AdAccount`
+- `AdCampaign`
+- `AdMetric`
+- `Lead`
 
-🔑 Required Environment Variables
-NEXTAUTH_SECRET=your-secret-key
-DATABASE_URL=your-database-url
-NEXTAUTH_URL=https://your-domain.com
+This provides a strong base for evolving the portal from a front-end prototype into a fully data-backed agency operations platform.
 
-📸 Social Preview
+## Deployment
 
-SOCIA includes a custom Open Graph cover for social sharing:
+The project can be deployed on platforms such as Vercel.
 
-/public/og-cover.jpg
+Before deploying:
 
-🤝 Built For
+- Set `DATABASE_URL`, `NEXTAUTH_SECRET`, and `NEXTAUTH_URL`
+- Ensure the PostgreSQL database is reachable from the deployment environment
+- Run Prisma generation as part of the build pipeline if needed
+- Review the current mock authentication behavior before exposing the app publicly
 
-Creative agencies
+## Roadmap Ideas
 
-Performance marketing teams
+- Replace mock dashboard data with live database-backed queries
+- Enable Prisma adapter in NextAuth
+- Add secure password hashing and user provisioning
+- Add role-based access for agency admins and client users
+- Support report exports and client sharing workflows
+- Connect real ad platform and CRM data sources
 
-Growth consultancies
+## License
 
-Client-facing marketing professionals
-
-📄 License
-
-Private project — SOCIA Creative Agency ©
+This project is currently private/internal unless you choose to publish it under a separate license.
